@@ -24,6 +24,10 @@ new_levels <- read_html(url) |>
   mutate(water_level_cm_lake = (water_level_m_nhn - lake_constance_zero) * 100) |> 
   mutate(water_level_cm_lake = as.integer(water_level_cm_lake))
 
+print("Start:")
+print(new_levels |> head(2))
+print("End:")
+print(new_levels |> tail(2))
 
 # merge -------------------------------------------------------------------
 
