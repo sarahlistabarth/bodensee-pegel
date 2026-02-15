@@ -8,7 +8,8 @@ lake_constance_zero <- 391.84
 
 # read in old -------------------------------------------------------------
 
-old_levels <- read_parquet("water_level.parquet")
+old_levels <- read_parquet("water_level.parquet") |> 
+  mutate(date = as.POSIXct(date, format = "%d.%m.%Y %H:%M"))
 
 # read in new -------------------------------------------------------------
 
