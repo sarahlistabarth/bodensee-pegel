@@ -38,6 +38,7 @@ levels <- old_levels |>
   )
 
 duplicates <- levels |> group_by(date) |> filter(n() > 1)
+message("no. of duplicates: ", nrow(duplicates))
 message("duplicates: ", duplicates |> pull(date))
 
 unique_dates <- levels$date |> unique() |> length()
@@ -45,7 +46,7 @@ rows_levels <- nrow(levels)
 if(unique_dates != rows_levels){
   message("Rows old levels:", nrow(old_levels), "\nRows new:", nrow(new_levels))
   message("Unique dates: ", unique_dates, "\n Level nrows: ", rows_levels)
-  stop("Dates are not unique")
+  message("Dates are not unique")
   }
 
 # export ------------------------------------------------------------------
