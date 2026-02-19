@@ -36,6 +36,9 @@ levels <- old_levels |>
     anti_join(new_levels |> arrange(date), old_levels)
   )
 
+duplicates <- levels |> group_by(date) |> filter(n() > 1)
+message("duplicates: ", duplicates |> pull(date))
+
 unique_dates <- levels$date |> unique() |> length()
 rows_levels <- nrow(levels)
 if(unique_dates != rows_levels){
